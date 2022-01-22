@@ -60,13 +60,13 @@ namespace Rain
 		static void Install()
 		{
 			REL::Relocation<std::uintptr_t> precipitationUpdate{ REL::ID(25638), 0x238 };
-			stl::write_thunk_call<ToggleWaterRipples>(precipitationUpdate.address());
+			::stl::write_thunk_call<ToggleWaterRipples>(precipitationUpdate.address());
 
 			REL::Relocation<std::uintptr_t> load_interior{ REL::ID(13171) };
-			stl::write_thunk_call<SetInterior>(load_interior.address() + 0x2E6);
+			::stl::write_thunk_call<SetInterior>(load_interior.address() + 0x2E6);
 
 			REL::Relocation<std::uintptr_t> leave_interior{ REL::ID(13172), 0x2A };
-			stl::write_thunk_call<SetInterior>(leave_interior.address());
+			::stl::write_thunk_call<SetInterior>(leave_interior.address());
 
 			logger::info("Installed rain manager");
 		}
@@ -155,12 +155,12 @@ namespace Rain
 		{
 			REL::Relocation<std::uintptr_t> target{ REL::ID(36682) };  //Actor::CreateBlood
 
-			stl::write_thunk_call<GetScreenSplatterCount>(target.address() + 0x13A);
+			::stl::write_thunk_call<GetScreenSplatterCount>(target.address() + 0x13A);
 
-			stl::write_thunk_call<AddDecal>(target.address() + 0x925);  // Player
+			::stl::write_thunk_call<AddDecal>(target.address() + 0x925);  // Player
 
 			if (Settings::GetSingleton()->GetAllowRainingNPC()) {
-				stl::write_thunk_call<AddDecal>(target.address() + 0x10D5);  // NPC
+				::stl::write_thunk_call<AddDecal>(target.address() + 0x10D5);  // NPC
 			}
 
 			logger::info("Installed no rain blood splatter");
@@ -185,7 +185,7 @@ namespace Rain
 		inline void Install()
 		{
 			REL::Relocation<std::uintptr_t> createBloodOnWeapon{ REL::ID(36683), 0x89 };
-			stl::write_thunk_call<GetUnk317>(createBloodOnWeapon.address());
+			::stl::write_thunk_call<GetUnk317>(createBloodOnWeapon.address());
 		}
 	}
 

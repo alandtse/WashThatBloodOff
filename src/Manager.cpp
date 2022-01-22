@@ -36,7 +36,7 @@ namespace util
 				}
 			}
 			if (const auto& biped = a_actor->GetBiped(i)) {
-				for (auto j = stl::to_underlying(RE::BIPED_OBJECT::kHandToHandMelee); j < stl::to_underlying(RE::BIPED_OBJECT::kTotal); j++) {
+				for (auto j = ::stl::to_underlying(RE::BIPED_OBJECT::kHandToHandMelee); j < ::stl::to_underlying(RE::BIPED_OBJECT::kTotal); j++) {
 					if (auto& weapon = biped->objects[j].partClone) {
 						RE::BSTempEffectWeaponBlood::ClearEffectForWeapon(weapon.get());
 					}
